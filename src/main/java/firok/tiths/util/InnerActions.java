@@ -240,8 +240,25 @@ public final class InnerActions
 	 */
 	public static boolean isLocalClient(EntityPlayer player)
 	{
-		try { return player.world.isRemote && Minecraft.getMinecraft().player.getDisplayNameString().equals(player.getDisplayNameString()); }
-		catch (Exception ignore) { return false; }
+		if(!player.world.isRemote) return false;
+		try { 
+			return ClientSideHelper.isLocalPlayer(player);
+		}
+		catch (Exception ignore) { 
+			return false; 
+		}
+	}
+	
+	/**
+	 * 客户端专用的辅助类，防止服务端加载客户端类
+	 */
+	@SideOnly(Side.CLIENT)
+	private static class ClientSideHelper
+	{
+		static boolean isLocalPlayer(EntityPlayer player)
+		{
+			return Minecraft.getMinecraft().player.getDisplayNameString().equals(player.getDisplayNameString());
+		}
 	}
 
 	/* ---- 一些数据操作工具方法 ---- */
