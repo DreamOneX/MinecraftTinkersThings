@@ -66,7 +66,7 @@ public class ToolRodIngredient extends Ingredient
 		Item item = stack.getItem();
 		int id = Item.getIdFromItem(item);
 		int damage = stack.getMetadata();
-		return id << 16 | damage & 65535;
+		return id << 16 | damage & 0xFFFF;
 	}
 
 	@Override

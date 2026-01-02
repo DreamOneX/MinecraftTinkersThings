@@ -250,6 +250,7 @@ public final class InnerActions
 	}
 	
 	/**
+	 * Client-side helper class to prevent server from loading client classes
 	 * 客户端专用的辅助类，防止服务端加载客户端类
 	 */
 	@SideOnly(Side.CLIENT)
