@@ -37,7 +37,7 @@ jobs:
     - name: Setup Forge workspace
       env:
         ORG_GRADLE_JVMARGS: -Xmx7800M -XX:MaxMetaspaceSize=1g
-        JAVA_TOOL_OPTIONS: -Xmx4G
+        JAVA_TOOL_OPTIONS: -Xmx6G
       run: |
         if [ -f gradlew ]; then
           ./gradlew setupDecompWorkspace --no-daemon
@@ -49,7 +49,7 @@ jobs:
     - name: Build with Gradle
       env:
         ORG_GRADLE_JVMARGS: -Xmx15G -XX:MaxMetaspaceSize=1g
-        JAVA_TOOL_OPTIONS: -Xmx4G
+        JAVA_TOOL_OPTIONS: -Xmx6G
       run: |
         if [ -f gradlew ]; then
           ./gradlew build --no-daemon --stacktrace
