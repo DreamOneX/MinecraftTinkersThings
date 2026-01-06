@@ -47,7 +47,7 @@ jobs:
       
     - name: Build with Gradle
       env:
-        ORG_GRADLE_JVMARGS: -Xmx4g -XX:MaxMetaspaceSize=1g
+        ORG_GRADLE_JVMARGS: -Xmx 7800M -XX:MaxMetaspaceSize=1g
       run: |
         if [ -f gradlew ]; then
           ./gradlew build --no-daemon --stacktrace
