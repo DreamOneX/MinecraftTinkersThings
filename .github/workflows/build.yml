@@ -35,6 +35,8 @@ jobs:
       run: chmod +x gradlew || echo "No gradlew found, using system gradle"
       
     - name: Setup Forge workspace
+      env:
+        ORG_GRADLE_JVMARGS: -Xmx4g -XX:MaxMetaspaceSize=1g
       run: |
         if [ -f gradlew ]; then
           ./gradlew setupDecompWorkspace --no-daemon
@@ -44,6 +46,8 @@ jobs:
       continue-on-error: true
       
     - name: Build with Gradle
+      env:
+        ORG_GRADLE_JVMARGS: -Xmx4g -XX:MaxMetaspaceSize=1g
       run: |
         if [ -f gradlew ]; then
           ./gradlew build --no-daemon --stacktrace
